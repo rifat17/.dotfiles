@@ -1,0 +1,61 @@
+lf
+ls
+rm -rf Do* Mu* P* Tem* Vi*
+ls
+ln -s /800GB/CV CV
+ls
+ln -s /800GB/ClassOf4_2 classLestures42
+ln -s /800GB/Home/Downloads Downloads
+ln -s /800GB/Home/HomeCurrent/IdeaProjects IdeaProjects
+ln -s /800GB/Home/HomeCurrent/PycharmProjects PycharmProjects
+ln -s /800GB/Home/HomeCurrent/Pictures Pictures
+ln -s /800GB/Thesis Thesis
+ln -s /800GB/Home/HomeCurrent/Workstation Workstation
+ls
+cd .config/shell
+ls
+vim profile
+source profile
+cd
+cd .local/share
+ls
+GNUPGHOME
+$GNUPGHOME
+pwd
+ln -s /800GB/Home/tempHome/.gnupg gnupg
+$GNUPGHOME
+echo $GNUPGHOME
+echo $PASSWORD_STORE_DIR
+ln -s /800GB/Home/tempHome/.password-store password-store
+pass
+ls
+ls
+pwd
+rm password-store
+ls
+pwd
+cd ..
+ls
+ln -s /800GB/Home/tempHome/.password-store password-store
+pass
+cd larbs
+ls
+cat ttymaps.kmap
+cd getkeys
+ls
+cat calcurse
+cat newsboat
+cat sxiv
+ls
+cd
+ls -a
+ls -a /800GB/Home
+ls -a /800GB/Home/tempHome
+ls -a /800GB/Home/tempHome/.ssh
+ln -s /800GB/Home/tempHome/.ssh .ssh
+ls
+ls -l
+ls -al
+ln -s /800GB/Home/tempHome/.gitconfig .gitconfig
+cat .gitconfig
+passmenu

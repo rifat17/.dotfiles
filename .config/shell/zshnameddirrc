@@ -1,0 +1,12 @@
+hash -d cac=/home/hasib/.cache 
+hash -d cf=/home/hasib/.config 
+hash -d D=/home/hasib/Downloads 
+hash -d d=/home/hasib/Documents 
+hash -d dt=/home/hasib/.local/share 
+hash -d h=/home/hasib 
+hash -d m=/home/hasib/Music 
+hash -d mn=/mnt 
+hash -d pp=/home/hasib/Pictures 
+hash -d sc=/home/hasib/.local/bin 
+hash -d src=/home/hasib/.local/src 
+hash -d vv=/home/hasib/Videos 
