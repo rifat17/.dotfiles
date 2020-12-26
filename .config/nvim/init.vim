@@ -1,21 +1,5 @@
 """ Optixal's Neovim Init.vim
-
-
-let mapleader =","
-
-if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
-	autocmd VimEnter * PlugInstall
-endif
-
-" My Plugin settings {
-" if filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/mycustom"'))
-" endif
-" }
-
-" source ~/.config/nvim/mycustom/markdown.vim
+" https://github.com/Optixal/neovim-init.vim
 
 
 """ Vim-Plug
@@ -23,38 +7,32 @@ call plug#begin()
 
 " Aesthetics - Main
 Plug 'dracula/vim', { 'commit': '147f389f4275cec4ef43ebc25e2011c57b45cc00' }
-Plug 'bling/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-" Plug 'junegunn/seoul256.vim'
-" Plug 'junegunn/vim-journal'
-" Plug 'junegunn/rainbow_parentheses.vim'
-" Plug 'nightsense/forgotten'
-" Plug 'zaki/zazen'
-
-
-" Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-journal'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'nightsense/forgotten'
+Plug 'zaki/zazen'
 
 " Aethetics - Additional
-" Plug 'nightsense/nemo'
-" Plug 'yuttie/hydrangea-vim'
-" Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
-" Plug 'rhysd/vim-color-spring-night'
+Plug 'nightsense/nemo'
+Plug 'yuttie/hydrangea-vim'
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'rhysd/vim-color-spring-night'
 
 " Functionalities
-" Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
-Plug 'preservim/nerdtree'
-" Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'zchee/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
@@ -63,31 +41,34 @@ Plug 'tpope/vim-abolish'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'chrisbra/Colorizer'
-" Plug 'KabbAmine/vCoolor.vim'
+Plug 'KabbAmine/vCoolor.vim'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-" Plug 'vim-scripts/loremipsum'
+Plug 'vim-scripts/loremipsum'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
 
-"GOLang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
-" Vim Commentry
-Plug 'tpope/vim-commentary'
+" LanguageClient-neovim
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+
+" Slim, Fast and Hackable Completion Framework for Neovim
+
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
 
 
-" Java-completion
-" Plug 'junegunn/vim-javacomplete2'
-Plug 'artur-shaik/vim-javacomplete2'
-
-" Java-completion
-" Plug 'junegunn/vim-javacomplete2', {'for': 'java'} " Load only for java files
-" END JAVA PLUGIN
 
 
 " Entertainment
@@ -96,7 +77,8 @@ Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
 
 """ Python3 VirtualEnv
-let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
+" let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
+let g:python3_host_prog='~/.config/nvim/env/bin/python'
 
 """ Coloring
 syntax on
@@ -122,22 +104,59 @@ set list listchars=trail:»,tab:»-
 set fillchars+=vert:\ 
 set wrap breakindent
 set encoding=utf-8
-set number
+set number relativenumber
 set title
-set mouse=a
-set clipboard+=unnamedplus
-
-
-" highlight OverLength ctermbg=red ctermfg=white guibg=#111111
-" match OverLength /\%81v.\+/
-
-
-let &colorcolumn=join(range(81,999),",")
-let &colorcolumn="80,".join(range(400,999),",")
-
 
 
 """ Plugin Configurations
+
+
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['~/.config/nvim/env/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ 'java': ['java-lsp.sh'],
+    \ }
+
+" https://zignar.net/2019/11/21/setup-neovim-for-java-development/
+
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+let g:LanguageClient_autoStart = 1
+" Use the location list instead of the quickfix list to show linter warnings
+let g:LanguageClient_diagnosticsList = "Location"
+let g:LanguageClient_rootMarkers = {
+    \ 'java': ['.git']
+    \ }
+
+
+" set hidden
+nnoremap <buffer> <silent> F5 :call LanguageClient_contextMenu()<CR>
+nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <buffer> <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <buffer> <silent> gr :call LanguageClient_textDocument_references()<CR>
+nnoremap <buffer> <silent> <leader>fs :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <buffer> <silent> crr :call LanguageClient_textDocument_rename()<CR>
+nnoremap <buffer> <silent> <a-CR> :call LanguageClient_textDocument_codeAction()<CR>
+
+
+
+
+" note that if you are using Plug mapping you should not use `noremap` mappings.
+nmap <F5> <Plug>(lcn-menu)
+" Or map each action separately
+nmap <silent>K <Plug>(lcn-hover)
+nmap <silent> gd <Plug>(lcn-definition)
+nmap <silent> <F2> <Plug>(lcn-rename)
+
+
+
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -158,41 +177,7 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
 " Deoplete
-" disable autocompletion, because we use deoplete for completion
-let g:jedi#completions_enabled = 0
-
 let g:deoplete#enable_at_startup = 1
-
-
-" https://averywagar.com/posts/2018/01/configuring-vim-for-java-development/
-" Setup completion sources
-let g:deoplete#sources = {}
-
-" IMPORTANT: PLEASE INSTALL JAVACOMPLETE2  AND ULTISNIPS OR DONT ADD THIS LINE!
-" =====================================
-
-" Available values are [package, func, type, var, const]. If you did not include any value, it will always be hidden in the completion list.
-" https://vimawesome.com/plugin/deoplete-go
-"
-" TIPS Here https://www.galiglobal.com/blog/2017/20170226-Vim-as-Java-IDE-again.html
-
-let g:deoplete#sources.java = ['jc', 'javacomplete2', 'file', 'buffer', 'ultisnips']
-
-" =====================================
-
-""use TAB as the mapping
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ?  "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "" {{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction "" }}}
-
-
-
-
 " Disable documentation window
 set completeopt-=preview
 
@@ -206,11 +191,6 @@ let g:SuperTabDefaultCompletionType = "<C-n>"
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-x>"
-
-let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'UltiSnips']
-
-
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
@@ -244,12 +224,10 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-
-
 """ Filetype-Specific Configurations
 
 " HTML, XML, Jinja
-
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -260,12 +238,6 @@ autocmd FileType htmldjango inoremap {# {#  #}<left><left><left>
 " Markdown and Journal
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType journal setlocal shiftwidth=2 tabstop=2 softtabstop=2
-
-
-" Java completion
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType java JCEnable
-
 
 """ Custom Functions
 
@@ -308,16 +280,12 @@ endfunction
 
 """ Custom Mappings
 
-" Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| !compiler "<c-r>%"<CR>
-
-
 let mapleader=","
 nmap <leader>q :NERDTreeToggle<CR>
 nmap \ <leader>q
 nmap <leader>w :TagbarToggle<CR>
 nmap <leader>ee :Colors<CR>
-nmap <leader>ea :AirlineTheme 
+nmap <leader>ea :AirlineTheme
 nmap <leader>e1 :call ColorDracula()<CR>
 nmap <leader>e2 :call ColorSeoul256()<CR>
 nmap <leader>e3 :call ColorForgotten()<CR>
@@ -341,4 +309,4 @@ autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yap
 nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
-'
+a
