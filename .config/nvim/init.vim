@@ -77,8 +77,7 @@ Plug 'roxma/nvim-yarp'
 call plug#end()
 
 """ Python3 VirtualEnv
-" let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
-let g:python3_host_prog='~/.config/nvim/env/bin/python'
+let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
 
 """ Coloring
 syntax on
@@ -106,7 +105,8 @@ set wrap breakindent
 set encoding=utf-8
 set number relativenumber
 set title
-
+set mouse=a
+set clipboard=unnamedplus
 
 """ Plugin Configurations
 
@@ -154,6 +154,7 @@ nmap <F5> <Plug>(lcn-menu)
 nmap <silent>K <Plug>(lcn-hover)
 nmap <silent> gd <Plug>(lcn-definition)
 nmap <silent> <F2> <Plug>(lcn-rename)
+
 
 
 
@@ -309,4 +310,8 @@ autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yap
 nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
-a
+
+" Compile document, be it groff/LaTeX/markdown/etc.
+	map <leader>c :w! \| !compiler "<c-r>%"<CR>
+
+

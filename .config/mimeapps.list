@@ -17,3 +17,6 @@ application/rss+xml=rss.desktop
 video/x-matroska=video.desktop
 x-scheme-handler/lbry=lbry.desktop
 inode/directory=file.desktop
+x-scheme-handler/webcal=chromium.desktop
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_home_hasib_Documents_eclipse_.desktop
