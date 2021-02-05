@@ -51,7 +51,8 @@ Plug 'honza/vim-snippets'
 Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
 
-
+" GoLang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " LanguageClient-neovim
 
@@ -123,6 +124,18 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ 'java': ['java-lsp.sh'],
     \ }
+" \ 'go': ['gopls'],
+" autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+
+
+
+"let g:LanguageClient_loggingLevel = 'INFO'
+"let g:LanguageClient_virtualTextPrefix = ''
+"let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
+"let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
+"
+
+
 
 " https://zignar.net/2019/11/21/setup-neovim-for-java-development/
 
@@ -239,6 +252,10 @@ autocmd FileType htmldjango inoremap {# {#  #}<left><left><left>
 " Markdown and Journal
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType journal setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+" GoLang
+autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
 
 """ Custom Functions
 

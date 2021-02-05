@@ -24,12 +24,19 @@ static char selbordercolor[]        = "#770000";
 static char selbgcolor[]            = "#005577";
 
 
+
 static char *colors[][3] = {
     /*               fg         bg         border    */
-    [SchemeNorm] = { "#c5c8c6", "#1d1f21", "#282a2e" },
-    [SchemeSel]  = { "#1d1f21", "#f0c674", "#f0c674" }
+    [SchemeNorm] = { "#15181E", "#bbbcc8", "#15181E" },
+    [SchemeSel]  = { "#15181E", "#31C5A7", "#8C9CA8" }
 };
 
+// static char *colors[][3] = {
+//     /*               fg         bg         border    */
+//     [SchemeNorm] = { "#c5c8c6", "#1d1f21", "#282a2e" },
+//     [SchemeSel]  = { "#1d1f21", "#f0c674", "#f0c674" }
+// };
+// 
 
 /* static char *colors[][3] = { */
 /*        /1*               fg           bg           border   *1/ */
