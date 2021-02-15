@@ -15,7 +15,7 @@ static int swallowfloating    = 0;        /* 1 means swallow floating windows by
 static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static char *fonts[]          = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"  };
+static char *fonts[]          = { "monospace:size=13", "JoyPixels:pixelsize=13:antialias=true:autohint=true"  };
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -28,7 +28,7 @@ static char selbgcolor[]            = "#005577";
 static char *colors[][3] = {
     /*               fg         bg         border    */
     [SchemeNorm] = { "#15181E", "#bbbcc8", "#15181E" },
-    [SchemeSel]  = { "#15181E", "#31C5A7", "#8C9CA8" }
+    [SchemeSel]  = { "#15181E", "#2aa198", "#8C9CA8" }
 };
 
 // static char *colors[][3] = {
@@ -58,6 +58,10 @@ static Sp scratchpads[] = {
 	{"spterm",      spcmd1},
 	{"spcalc",      spcmd2},
 };
+
+//static const char *brinc[] = { "~/.local/bin/brightnessctl", "up", NULL };
+//static const char *brdec[] = { "~/.local/bin/brightnessctl", "down", NULL };
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -300,9 +304,10 @@ static Key keys[] = {
 	{ 0, XF86XK_TouchpadToggle,	spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
 	{ 0, XF86XK_TouchpadOff,	spawn,		SHCMD("synclient TouchpadOff=1") },
 	{ 0, XF86XK_TouchpadOn,		spawn,		SHCMD("synclient TouchpadOff=0") },
-	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
-
+//	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
+//	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("~/.local/bin/brightnessctl up") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("~/.local/bin/brightnessctl down") },
 	/* { MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
 	/* { MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } }, */
